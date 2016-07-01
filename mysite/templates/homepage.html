@@ -1,0 +1,111 @@
+{% extends "site_base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{STATIC_URL}}css/site-c179c6a5f4.css">
+{% endblock %}
+
+
+
+{% block head_title %}{% trans "Welcome" %}{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block body_base %}
+
+
+
+<section class='pariah'>
+<h></h>
+<p></p>
+</section>
+
+    <section class="jumbotron">
+    
+        <div class="container" style= padding:0px;">
+        
+            {% include "_messages.html" %}
+            <h1>{% blocktrans %}Welcome to<br>ThoughtScape{% endblocktrans %}
+
+
+			</h1>
+            <p>
+                {% blocktrans %}
+                Have a "Private Twitter?"  A "Fake Instagram?"  Is it worth all the effort to
+                log in and out of an app to tell people what you're thinking?
+                
+                ThoughtScape lets you communicate your thoughts to specific groups of 
+                people.  Think of it as a "Private Twitter" but even more private and much
+                more versatile.
+                {% endblocktrans %}
+            </p>
+            {% if not user.is_authenticated %}
+            {% url "account_login" as login_url %}
+            {% url "account_signup" as signup_url %}
+            <p>{% blocktrans %}You can <a href="{{ login_url }}" class="btn btn-default">Log In</a> or <a href="{{ signup_url }}" class="btn btn-primary">Sign Up</a> to try out the site.{% endblocktrans %}</p>
+            
+            {% else %}
+            {% url "account_signup" as signup_url %}
+            {% url "front" as frontpage_url %}
+            <p> {% blocktrans %}Welcome Sir, click <a href="{{ frontpage_url }}" class="btn btn-primary">Front Page</a> to see your front page. {% endblocktrans %} </p>
+            {% endif %}
+        </div>
+   
+    </section>
+    <section>
+
+        <div class="container-fluid" style= padding:20px;">
+            <h1 class="lead text-center" style= background:radial-gradient(rgba(200,200,200,0.4),rgba(10,10,10,0.0));>
+
+    			</style>
+ 
+            {% blocktrans %}What is ThoughtScape?{% endblocktrans %}</h1>
+   
+               <p1 class='lead'> {% blocktrans %}
+                <b>ThoughtScape</b> allows you to form groups and share content to people you trust.
+                Don't want your Ex-Boyfriend to see your new post?  No problem.
+                {% endblocktrans %}
+            </p1>
+            <div class="gradient">
+           		<div class="feature-columns" style= color:black;>
+           		<div>
+           		<p1 class='lead'>
+                    <i class="fa fa-bold fa-3x" aria-hidden="true"></i>
+                    {% blocktrans %}
+                    <b>e Bold.</b> Speak your mind to those fit to listen.
+                    
+                    {% endblocktrans %}
+                </p1>
+                </div>
+                <div>
+                <p1 class='lead'>
+                	<i class="fa fa-question fa-4x fa-spin" aria-hidden="true"></i>
+                    {% blocktrans %}
+                    <b>Anonymous mode.</b> For when someone pisses you off.
+                    {% endblocktrans %}
+                </p1>
+                </div>
+                <div>
+                <p1 class='lead'>
+                    <i class="fa fa-bolt fa-3x" aria-hidden="true"></i>
+                    {% blocktrans %}
+                    <b>Lightning Fast.</b> Block lag out of your life forever.
+                    {% endblocktrans %}
+                </p1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class='jumbotron'>
+        <div class="container" style= padding:20px;">
+               
+                <h1><b><center> Forget Subtweets </center></b></h1>
+                            <p class="lead text-center"> 
+                It's time for RealThoughts
+                </p>
+            
+            </p>
+        </div>
+    </section>
+{% endblock %}

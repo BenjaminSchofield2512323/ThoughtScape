@@ -1,0 +1,42 @@
+{% extends "site_base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{STATIC_URL}}css/site-c179c6a5f4.css">
+{% endblock %}
+
+
+
+{% block head_title %}{% trans "Welcome" %}{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block body_base %}
+
+<section class="jumbotron">
+	{% url "frontpage.html" as post_url %}
+	<div class="container-fluid">
+	
+		<h1> No posts yet... Make your First Post! </h1>
+		<p class='lead'> Select exactly who will see your post and fire away.</p>
+		<div class="form-group">
+  		<label for="comment">Comment:</label>
+  		<textarea class="form-control" rows="5" id="comment"></textarea>
+		</div>
+		<button type="submit" class="btn btn-block btn btn-custom"><p1 class='lead'>{% trans "Submit" %}</p1></button>
+		
+		<h1>Fill Out This Form</h1>
+		<a href="{% url 'new_post' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+
+		<form action="/frontpage/" method="POST" class="NameForm">
+		{% csrf_token %}
+		<label for="your_name">Your name: </label>
+		<input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+    	<br/>
+    	Your Name: <input type="text" name="name">
+    	<br/>
+    	<input type="submit" value = "OK">
+	</form>
+{% endblock %}
+
